@@ -38,6 +38,7 @@ public class Lab6 {
 		WebElement spec = driver.findElement(By.xpath("/html/body/div/div/div/div/div/div/div[2]/table/tbody/tr/td[2]"));
 		Thread.sleep(1000);
 		if(spec.isDisplayed())
+			
 		{
 			System.out.println("Specifications are displayed");
 		}
