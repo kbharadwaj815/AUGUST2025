@@ -18,6 +18,7 @@ public class Part5ForNewsletter {
 		driver.findElement(By.xpath("//input[@name='newsletter' and @value='1']")).click();
         driver.findElement(By.name("agree")).click();
         driver.findElement(By.cssSelector("input.btn.btn-primary")).click();
+        
 	}
 
 }

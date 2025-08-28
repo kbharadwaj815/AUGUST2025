@@ -21,6 +21,7 @@ public class Lab5 {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         driver.get("https://tutorialsninja.com/demo/index.php?");
+        
 
         String title = driver.getTitle();
         System.out.println("Page Title: " + title);

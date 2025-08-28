@@ -25,4 +25,5 @@ public class Part2YourPersonalDetail {
 
         driver.quit();
     }
+    
 }

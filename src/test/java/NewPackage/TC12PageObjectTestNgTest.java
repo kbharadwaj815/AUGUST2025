@@ -1,4 +1,6 @@
+
 package NewPackage;
+
 import org.testng.annotations.Test;
  
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -25,26 +27,25 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.AfterSuite;
  
-public class TC10TestNg2 {
+public class TC12PageObjectTestNgTest {
 	WebDriver driver;
   @Test(dataProvider="logindata")
   public void f(String username, String password) {
 	  System.out.println("This is the test");
-		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-		WebElement uname=driver.findElement(By.name("username"));
-		if(uname.isDisplayed())
+	 driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+		Loginpage objlogin=new Loginpage(driver);
+			if(objlogin.usernameisdisplayed())
 		{
-			uname.sendKeys(username);
-		System.out.println("Get placeholder:"+uname.getAttribute("placeholder"));
+			objlogin.enterusername(username);
+		System.out.println("Get placeholder:"+objlogin.unamegetattributevalue());
 		}
 		else
 		{
 			System.out.println("username is not displayed");
 		}
-		driver.findElement(By.name("password")).sendKeys(password);
-		driver.findElement(By.xpath("//button[@type='submit']")).click();
-		WebElement dashboard=driver.findElement(By.xpath("//h6[text()='Dashboard']"));
-		if(dashboard.isDisplayed())
+		objlogin.enterpassword(password);
+		objlogin.clickonbutton();
+		if(objlogin.dashisdisplayed())
 		{
 	Assert.assertTrue(true);
 		}
@@ -54,36 +55,12 @@ public class TC10TestNg2 {
 		}
 
   }
-  @Test(groups= {"smoke"})
-  public void register()
-  {
-	 System.out.println("This is my registration"); 
-  }
-  @Test
-  public void addtocart()
-  {
-	 System.out.println("This is my addtocart"); 
-  }
-  @Parameters("browser")
+
   @BeforeMethod
-  public void beforeMethod(String brow) {
-	  System.out.println("This is Before Method");
-	  if(brow.equalsIgnoreCase("chrome"))
-	  {
-	  WebDriverManager.chromedriver().setup();
+  public void beforeMethod() {
+	 WebDriverManager.chromedriver().setup();
 		 driver=new ChromeDriver();
-	  }
-	  if(brow.equalsIgnoreCase("edge"))
-	  {
-	  WebDriverManager.edgedriver().setup();
-		 driver=new EdgeDriver();
-	  }
-	  if(brow.equalsIgnoreCase("firefox"))
-	  {
-	  WebDriverManager.firefoxdriver().setup();
-		 driver=new FirefoxDriver();
-	  }
-	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	  	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
   }
   @AfterMethod
   public void afterMethod() {
@@ -96,7 +73,6 @@ public class TC10TestNg2 {
   public Object[][] logindata() {
     return new Object[][] {
       new Object[] { "Admin", "admin123" },
-      new Object[] { "pooja", "welcome" },
     };
   }
   @BeforeClass

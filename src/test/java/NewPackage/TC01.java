@@ -26,6 +26,7 @@ public class TC01 {
 	driver.findElement(By.cssSelector(".btn.btn-primary")).click();
 	assert driver.getPageSource().contains("Warning: You must agree to the Privacy Policy!");
 	
+	
 
 	
 //Part 2: For 'Your Personal Details'
