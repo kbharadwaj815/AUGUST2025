@@ -3,19 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="NewPackage.TC14ReportTestNg">
+      <class name="com.orangehrm.tests.LoginOrangeHRM">
         <methods>
-          <include name="afterClass"/>
-          <include name="afterTest"/>
-          <include name="afterMethod"/>
-          <include name="beforeClass"/>
-          <include name="afterSuite"/>
-          <include name="f" invocation-numbers="1 2"/>
-          <include name="beforeTest"/>
-          <include name="beforeMethod"/>
-          <include name="beforeSuite"/>
+          <include name="setupreport"/>
+          <include name="flushreport"/>
+          <include name="setup"/>
+          <include name="verifylogin"/>
+          <include name="teardown"/>
         </methods>
-      </class> <!-- NewPackage.TC14ReportTestNg -->
+      </class> <!-- com.orangehrm.tests.LoginOrangeHRM -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
